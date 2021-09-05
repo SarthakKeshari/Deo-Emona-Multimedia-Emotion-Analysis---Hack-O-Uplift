@@ -8,6 +8,14 @@ In today's generation, its found generally that some have mood swings. Usually u
 #MentalHeath
 <br>
 <br>
+##### Lets get started...
+<br>
+<video width="320" height="240" controls>
+  <source src="https://youtu.be/SHFBAVUefwM" type="video/mp4">
+</video>
+<br>
+<hr>
+<hr>
 ### Requirements
 - Python 3.0 or higher
 - Tensorflow: 2.6.0 (*recommended*)
