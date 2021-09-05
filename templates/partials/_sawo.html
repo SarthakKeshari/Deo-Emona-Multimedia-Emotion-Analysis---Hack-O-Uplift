@@ -1,0 +1,28 @@
+  
+{% load static %} {% csrf_token %}
+<div id="sawo-container" style="height: 450px" class="container card shadow">
+    <h2 class="pt-4">Login</h2>
+    <h6>(Add value - Become a contributor)</h6>
+</div>
+<script src="https://websdk.sawolabs.com/sawo.min.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+  const csrfToken = "{{ csrf_token}}";
+  var config = {
+    containerID: "sawo-container",
+    identifierType: "email",
+    apiKey: "668e677d-6acc-4e70-9f90-ba46a842d569",
+    onSuccess: (payload) => {
+      axios({
+        method: "post",
+        url: "/{{sawo.to}}",
+        data: { payload },
+        headers: { "X-CSRFToken": csrfToken },
+      }).then((res) => {
+        location.reload();
+      });
+    },
+  };
+  var sawo = new Sawo(config);
+  sawo.showForm();
+</script>

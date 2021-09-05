@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block stylesheet %}
+    body{
+        background-image: url('../static/about_background.jpg');
+        background-size: 100%;
+    }
+{% endblock stylesheet %}
+
+{% block title %}About | {% endblock title %}
+
+{% block body %}
+<div class="container my-2">
+  <div class="row">
+    <div class="col-12">
+        <h4 class="text-center my-4">About</h4>
+        <p>Multimedia Emotion Analysis provides the information about the emotions which the video/audio conveys to the audience. We have developed a model using machine learning algorithms to process the video/audio and perform analysis in order to know the type of emotion exhibited by different sections of the video/audio and the inference about the emotion conveyed by the multimedia as a whole.</p>
+    </div>
+    <div class="col-6 bg-danger bg-gradient my-4 p-2">
+        <strong><p class="blockquote text-center">Why?</p></strong>
+        <p class="text-white">In today's generation, its found generally that some  have mood swings. Usually users end up looking for good videos/audios which depends upon their interest and mood. Therefore we have come up with an idea of recommending the videos/audio to the users. <br> For example - If the user if having a bad day, then videos can be recommended that would lift up his mood by showing videos that lies under his area of interest as well as tagged as joyful and happiness.</p>
+    </div>
+    <div class="col-6 bg-success bg-gradient my-4 p-2">
+        <strong><p class="blockquote text-center">How?</p></strong>
+        <p class="text-white">We analyze the video/audio by processing text and images to get the desired emotions. Here we have taken 5 emotions into consideration, they are - 'neutral', 'joy', 'sadness', 'fear' and 'anger'. <br> Furthermore, we have analyzed the texts, captioning, emotion detection,  video frames, facial emotions ...</p>
+    </div>
+    <div class="col-12 text-center">
+        {% comment %} <h5>Tech Stack Used</h5> {% endcomment %}
+    </div>
+  </div>
+</div>
+{% endblock body %}

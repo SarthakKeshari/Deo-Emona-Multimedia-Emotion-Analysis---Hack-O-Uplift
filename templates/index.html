@@ -1,0 +1,130 @@
+{% extends 'base.html' %}
+
+
+{% block title %}Home | {% endblock title %}
+
+{% block body %}
+<div class="container-fluid p-0 w-100 mx-auto d-block">
+    <img src="../static/emotions.jpg" class="img-fluid" alt="...">
+</div>
+<div class="container">
+    <form enctype="multipart/form-data" method="POST" action="/">
+    {% csrf_token %}
+        <label for="formFile" class="form-label mt-4">Attach a video/audio file</label>
+        <div class="d-flex">
+            <input class="form-control" id="video_upload" name="video_file" type="file" accept="video/*, audio/*" id="formFile" onchange="enableButton()" required>
+            <script type ="text/javascript" >
+                function enableButton()
+                {
+                    if(document.getElementById("video_upload").value != "") {
+                        // console.log(document.getElementById("upload").disabled = false)
+                        document.getElementById("upload").disabled = false
+                    }
+                    else{
+                        // console.log(document.getElementById("upload").disabled = true)   
+                        document.getElementById("upload").disabled = true
+                    }
+                }
+            </script>
+            <button type="button" id="upload" class="btn btn-primary col-lg-2 col-sm-6" data-bs-toggle="modal" data-bs-target="#exampleModal" disabled>Upload</button>
+            
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Confirmation</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-dark">
+                    The media undergoes a series of checks to produce an effective result. So processing might take a couple of minutes. (Usually processing time = 2 x Length of video/audio)
+                </div>
+                <div class="modal-footer" id="confirmation_buttons">
+                    <button type="button" id="no" class="btn btn-danger w-100" data-bs-dismiss="modal">Oops NO!</button>
+                    <button type="submit" id="ok" class="btn btn-success w-100" data-bs-toggle="modal" data-bs-target="#loadingModal" onclick="loadingdisplay()">Its OK!</button>
+                </div>
+                <script type ="text/javascript" >
+                    function loadingdisplay()
+                    {
+                        document.getElementById("loading").style.display = "block"
+                        document.getElementById("confirmation_buttons").style.display = "none"
+                    }
+                </script>
+                <div class="modal-body" id="loading" style="display: none">
+                    <div class="d-flex align-items-center">
+                        <strong>Analyzing...</strong>
+                        <div class="spinner-border ms-auto" role="status" style="width: 3rem; height: 3rem;" aria-hidden="true"></div>
+                    </div>
+                </div>
+
+                </div>
+            </div>
+            </div>
+        </div>
+        <div id="videoHelp" class="form-text text-end" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true" title=".mp4, .mp3, .aac, .ogv">All supported formats</div>
+        {% comment %} <button type="button" class="btn btn-secondary"   >
+            Tooltip on top
+        </button> {% endcomment %}
+        {% comment %} <hr style="height: 20px;"> {% endcomment %}
+    </form>
+    {% if play_video is not None or play_audio is not None %}
+        {% comment %} <div id="videoHelp" class="form-text text-center text-danger mt-4">(Note :- The video undergoes a series of checks to produce an effective result. So processing might take a couple of minutes.)</div> {% endcomment %}
+        {% if play_video %}
+            <video controls autoplay class="w-100 mt-2">  
+                <source src="{{play_video}}">  
+                Your browser does not support the html video tag.  
+            </video>
+        {% endif %}
+        {% if play_audio %}
+            <audio controls autoplay class="w-100 mt-4">  
+                <source src="{{play_audio}}">  
+                Your browser does not support the html video tag.  
+            </audio>
+        {% endif %}
+        <br>
+        <hr>
+        <p class="h5 text-danger text-center">!!Thankyou for your patience!!</p>
+        <hr style="height: 20px;">
+        <br>
+        <p class="h4 text-dark text-center">Analysis Report</p>
+        <br>
+        {% if text_return %}
+            <table class="table">
+                <thead>
+                    <tr>
+                    <th scope="col">Timestamp</th>
+                    <th scope="col">Emotion</th>
+                    </tr>
+                </thead>
+                <tbody>
+        {% endif %}
+        {% for text in text_return %}
+                    <tr>
+                    {% for i in text %}
+                        <td scope="row">{{i}}</td>
+                    {% endfor %}
+                    </tr>
+        {% endfor %}
+        {% if text_return %}
+                </tbody>
+            </table>
+        {% endif %}
+        <span class="h4 d-flex justify-content-center">The above multimedia as a whole can be inferred as</span>
+        <span class="h2 text-primary d-flex justify-content-center">"{{overall_review}}"</span>
+        <br>
+        <br>
+        <form enctype="multipart/form-data" method="POST" action="/print_page">
+            {% csrf_token %}
+            <div class="d-flex justify-content-center">
+                <button type="submit" id="download" class="btn btn-success w-50">Download Full Analysis Report</button>
+            </div>
+        </form>
+
+
+    {% endif %}
+    <br>
+    
+</div>
+<br>
+<br>
+{% endblock body %}

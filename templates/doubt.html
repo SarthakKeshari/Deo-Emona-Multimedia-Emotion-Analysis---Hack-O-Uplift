@@ -1,0 +1,132 @@
+{% extends 'base.html' %}
+ 
+{% block stylesheet %}
+    body{
+        background-image: url('../static/doubt_background.jpg');
+        width: 100%;
+    }
+    details[open] summary ~ * {
+        animation: open 0.3s ease-in-out;
+    }
+
+    @keyframes open {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+    details summary::-webkit-details-marker {
+        display: none;
+    }
+
+    details summary {
+        width: 100%;
+        padding: 0.5rem 0;
+        border-top: 1px solid black;
+        position: relative;
+        cursor: pointer;
+        font-size: 1.25rem;
+        font-weight: 300;
+        list-style: none;
+    }
+
+    details summary:after {
+        content: "+";
+        color: black;
+        position: absolute;
+        font-size: 1.75rem;
+        line-height: 0;
+        margin-top: 0.75rem;
+        right: 0;
+        font-weight: 200;
+        transform-origin: center;
+        transition: 200ms linear;
+    }
+    details[open] summary:after {
+        transform: rotate(45deg);
+        font-size: 2rem;
+    }
+    details summary {
+        outline: 0;
+    }
+    details p {
+        font-size: 0.95rem;
+        margin: 0 0 1rem;
+        padding-top: 1rem;
+    }
+
+{% endblock stylesheet %}
+
+{% block title %}Doubt | {% endblock title %}
+
+{% block body %}
+
+<div class="container mt-4">
+    <form method="POST" action="/doubt">
+    {% csrf_token %}
+    <fieldset>
+        <legend class="h5"> Post your doubt here </legend>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Name</label>
+            <input type="text" class="form-control" name="name" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Email address</label>
+            <input type="email" class="form-control" name="email" id="exampleInputEmail1" aria-describedby="emailHelp"  placeholder="name@example.com" required>
+            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+        </div>
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Subject</label>
+            <input type="text" class="form-control" name="subject" id="exampleFormControlInput1" required>
+        </div>
+        <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label">Your Doubt</label>
+            <textarea class="form-control" name="doubt_desc" id="exampleFormControlTextarea1" rows="3" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </fieldset>
+    </form>
+
+    <br>
+    <br>
+    <hr>
+    <br>
+    <h2 class="text-center">FAQ</h2>
+    <hr>
+    {% for data in dataset %}
+        {% if data.question and data.answer %}
+            <section class="mb-5">
+                <details>
+                    <summary>{{data.question}}</summary>
+                    <p>
+                        {{data.answer}}
+                    </p>
+                </details>
+            </section>
+        {% endif %}
+    {% endfor %}
+    <br>
+    <br>
+    <br>
+    <br>
+    {% comment %} <div class="main">
+    
+        {% for data in dataset %}
+    
+        {{ data.name }}<br/>
+        {{ data.email }}<br/>
+        {{ data.subject }}<br/>
+        {{ data.doubt_desc }}<br/>
+        {{ data.date }}<br/>
+        {{ data.time }}<br/>
+        <hr/>
+    
+        {% endfor %}
+    
+    </div> {% endcomment %}
+</div>
+
+
+{% endblock body %}

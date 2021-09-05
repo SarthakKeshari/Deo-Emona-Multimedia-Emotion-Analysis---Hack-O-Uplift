@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+
+{% block stylesheet %}
+    body{
+        background-image: url('../static/contributors_background.jpg');
+        background-size: 100%;
+    }
+{% endblock stylesheet %}
+
+{% block title %}Contributors | {% endblock title %}
+
+{% block body %}
+
+<div class="container-fluid my-4">
+  <div class="row d-flex justify-content-center">
+    <div class="col-lg-5 d-flex justify-content-center">
+      <h4>Contributors</h4>
+    </div>
+    
+  </div>
+</div>
+<div class="container-fluid mt-4">
+  <div class="row d-flex justify-content-center mb-4">
+    <div class="col-lg-5 d-flex justify-content-center my-2">
+      <div class="card shadow">
+        <img src="../static/sarthak.png" class="card-img-top w-50 p-4 m-auto rounded" alt="...">
+        <div class="card-body">
+            <div class="d-flex">
+              <div class="card-title h4 my-2 me-2">Sarthak Keshari</div>
+              <div class="card-title small my-2 pt-2">(Student - Vellore Institute of Technology, Chennai)</div>
+            </div>
+            <p class="card-text m-2">Hey, I am Sarthak, an open-source enthusiast and teacher. I love to explore different techs and learn new approaches to solve a problem or real-life situation. I have an inclination not only towards coding a solution but also debugging other’s code.</p>
+            <h6 class="mt-4">Comfortable with - </h6>
+            <div class="d-flex flex-wrap mt-2">
+                <button type="button" class="btn btn-secondary btn-sm m-1" disabled>Java</button>
+                <button type="button" class="btn btn-secondary btn-sm m-1" disabled>Python</button>
+                <button type="button" class="btn btn-secondary btn-sm m-1" disabled>HTML</button>
+                <button type="button" class="btn btn-secondary btn-sm m-1" disabled>CSS</button>
+                <button type="button" class="btn btn-secondary btn-sm m-1" disabled>JavaScript</button>
+                <button type="button" class="btn btn-secondary btn-sm m-1" disabled>Bootstrap</button>
+                <button type="button" class="btn btn-secondary btn-sm m-1" disabled>PHP</button>
+                <button type="button" class="btn btn-secondary btn-sm m-1" disabled>SQL</button>
+                <button type="button" class="btn btn-secondary btn-sm m-1" disabled>Django</button>
+                <button type="button" class="btn btn-secondary btn-sm m-1" disabled>C</button>
+                <button type="button" class="btn btn-secondary btn-sm m-1" disabled>C++</button>
+            </div>
+            <h6 class="mt-4">Profile Links - </h6>
+            <a href="https://www.linkedin.com/in/sarthak-keshari/" class="btn btn-primary w-100 m-1">LinkedIn</a>
+            <a href="https://github.com/SarthakKeshari" class="btn btn-dark w-100 m-1">Github</a>
+            <a href="https://www.youtube.com/channel/UCr9-27DdJnRzyH-ZOKHztUA" class="btn btn-danger w-100 m-1">Youtube</a>
+            <a href="https://www.hackerrank.com/srthkkeshari84?hr_r=1" class="btn btn-success w-100 m-1">Hackerrank</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-5 d-flex justify-content-center my-2">
+      <div class="card shadow">
+        <img src="../static/anushka.png" class="card-img-top w-50 p-4 m-auto rounded" alt="...">
+        <div class="card-body">
+            <div class="d-flex">
+              <div class="card-title h4 my-2 me-2">Anushka Srivastava</div>
+              <div class="card-title small my-2 pt-2">(Student - Gautam Buddha University, Greater Noida)</div>
+            </div>
+            <p class="card-text m-2">Hello, I am Anushka Srivastava. Persuing Btech in Computer Science from Gautam Buddha University Greater Noida. An Enthusiastic and Passionate Coder and Developer.</p>
+            <h6 class="mt-4">Comfortable with - </h6>
+            <div class="d-flex flex-wrap mt-2">
+                <button type="button" class="btn btn-secondary btn-sm m-1" disabled>Java</button>
+                <button type="button" class="btn btn-secondary btn-sm m-1" disabled>Python</button>
+                <button type="button" class="btn btn-secondary btn-sm m-1" disabled>HTML</button>
+                <button type="button" class="btn btn-secondary btn-sm m-1" disabled>CSS</button>
+                <button type="button" class="btn btn-secondary btn-sm m-1" disabled>JavaScript</button>
+                <button type="button" class="btn btn-secondary btn-sm m-1" disabled>Node JS</button>
+                <button type="button" class="btn btn-secondary btn-sm m-1" disabled>Express JS</button>
+                <button type="button" class="btn btn-secondary btn-sm m-1" disabled>MongoDB</button>
+                <button type="button" class="btn btn-secondary btn-sm m-1" disabled>Machine Learning</button>
+            </div>
+            <h6 class="mt-4">Profile Links - </h6>
+            <a href="https://www.linkedin.com/in/anushka-srivastava-0b08b61b1" class="btn btn-primary w-100 m-1">LinkedIn</a>
+            <a href="https://github.com/anushka-srivastava22/" class="btn btn-dark w-100 m-1">Github</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock body %}

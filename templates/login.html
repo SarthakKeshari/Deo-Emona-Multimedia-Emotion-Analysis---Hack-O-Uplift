@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <link rel = "icon" href="../media/icon_titlebar.png" type="image/png">
+    <title> {% block title %}{% endblock title %}Multimedia Emotion Analysis</title>
+    <style>
+      {% block stylesheet %}{% endblock stylesheet %}
+    </style>
+  </head>
+  <body>
+        {% if load %}
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <div class="container-fluid">
+                    <a class="navbar-brand">
+                    <img src="../media/icon_navbar.png" alt="" width="34" height="32" class="d-inline-block align-text-top text-light">
+                    Deo Emona
+                    </a>   
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mb-lg-0">
+                        <li class="nav-item me-4">
+                            <a class="nav-link active" aria-current="page">Home</a>
+                        </li>
+                        <li class="nav-item mx-2">
+                            <a class="nav-link btn btn-light text-dark" href="" target="_blank">Logout</a>
+                        </li>
+                    </ul>
+                    </div>
+                </div>
+            </nav>
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>Login Successfull!</strong> 
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+
+            <div class="alert alert-warning" role="alert">
+            <h4 class="alert-heading">Hey!</h4>
+            <strong><br>Firstly, Thankyou for showing your interest for contributing</strong><br>
+                How to contribute - <br>
+                1) Given below is a table -> It has two columns(Sentence and Emotion)<br>
+                2) Read the sentence in column 1<br>
+                3) Write most appropriate emotion according to you in Column 2 from among the emotions in the given list - <br>
+                &emsp;'Joy', 'Sadness', 'Fear', 'Neutral' and 'Anger'
+                <br>
+                <br>
+            <hr>
+            <p class="mb-0">
+                For example - <br>
+                    There was no ice cream in the freezer, nor did they have money to go to the store - tag as 'SADNESS'</p>
+            </div>
+
+            <div class="container mt-4">
+        {% if sentences %}
+        <form method="POST" action="/login">
+        {% csrf_token %}
+        <fieldset>
+            <legend class="h5"> Sprinkle the emotions </legend>
+        <table class="table">
+            <thead>
+                <tr>
+                <th scope="col">Sentence</th>
+                <th scope="col">Emotion</th>
+                </tr>
+            </thead>
+            <tbody>
+        {% endif %}
+        {% for sent in sentences %}
+            <tr>
+                <td scope="row"><input type="text" class="form-control" name="sent{{ forloop.counter }}" id="sent{{forloop.counter}}" value="{{sent}}" readonly></td>
+                <td><input type="text" class="form-control" name="emotion{{ forloop.counter }}" id="emotion{{ forloop.counter }}" required></td>
+            </tr>
+        {% endfor %}
+        {% if sentences %}
+                </tbody>
+            </table>
+            <button type="submit" class="btn btn-primary ms-auto">Submit</button>
+        </fieldset>
+        </form>
+        <br>
+        <br>
+        {% endif %}
+
+
+
+
+
+            {% comment %} <p>{{load}}</p> {% endcomment %}
+        {% else %}
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <div class="container-fluid">
+                    <a class="navbar-brand">
+                    <img src="../media/icon_navbar.png" alt="" width="34" height="32" class="d-inline-block align-text-top text-light">
+                    Deo Emona
+                    </a>
+            </nav>
+            {% include "partials/_sawo.html" %} {% endif %}
+    
+
+    
+    
+    
+    
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-eMNCOe7tC1doHpGoWe/6oMVemdAVTMs2xqW4mwXrXsW0L84Iytr2wi5v2QjrP/xp" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js" integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/" crossorigin="anonymous"></script>
+    -->
+  </body>
+</html>
