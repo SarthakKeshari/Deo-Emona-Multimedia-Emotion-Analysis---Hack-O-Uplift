@@ -9,10 +9,9 @@ In today's generation, its found generally that some have mood swings. Usually u
 <br>
 <br>
 ##### Lets get started...
-<br>
-<video width="320" height="240" controls>
-  <source src="https://www.youtube.com/watch?v=SHFBAVUefwM" type="video/mp4">
-</video>
+Brief Project Description - https://www.youtube.com/watch?v=SHFBAVUefwM
+
+
 <br>
 <hr>
 <hr>
