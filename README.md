@@ -1,5 +1,13 @@
-## Deo-Emona-Multimedia-Emotion-Analysis---Hack-O-Uplift (Powered by SAWO Labs)
+# Deo-Emona-Multimedia-Emotion-Analysis---Hack-O-Uplift (Powered by SAWO Labs)
 
+## About
+Multimedia Emotion Analysis provides the information about the emotions which the video/audio conveys to the audience. We have developed a model using machine learning algorithms to process the video/audio and perform analysis in order to know the type of emotion exhibited by different sections of the video/audio and the inference about the emotion conveyed by the multimedia as a whole.
+
+#### Why?
+In today's generation, its found generally that some have mood swings. Usually users end up looking for good videos/audios which depends upon their interest and mood. Therefore we have come up with an idea of recommending the videos/audio to the users. <br> For example - If the user is having a bad day, then videos can be recommended that would lift up his mood by showing videos that lies under his area of interest as well as tagged as joyful and happiness.<br>
+#MentalHeath
+<br>
+<br>
 ### Requirements
 - Python 3.0 or higher
 - Tensorflow: 2.6.0 (*recommended*)
