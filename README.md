@@ -11,7 +11,7 @@ In today's generation, its found generally that some have mood swings. Usually u
 ##### Lets get started...
 <br>
 <video width="320" height="240" controls>
-  <source src="https://youtu.be/SHFBAVUefwM" type="video/mp4">
+  <source src="https://www.youtube.com/watch?v=SHFBAVUefwM" type="video/mp4">
 </video>
 <br>
 <hr>
