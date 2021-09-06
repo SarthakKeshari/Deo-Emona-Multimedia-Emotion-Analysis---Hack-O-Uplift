@@ -15,6 +15,7 @@ Brief Project Description - https://www.youtube.com/watch?v=SHFBAVUefwM
 <br>
 <hr>
 <hr>
+
 ### Requirements
 - Python 3.0 or higher
 - Tensorflow: 2.6.0 (*recommended*)
